@@ -12,6 +12,7 @@ namespace MyServer.HTTP
         {
             Path = "/";
         }
+        //Nice
 
         public int MaxAge { get; set; }
 
