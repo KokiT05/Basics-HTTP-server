@@ -70,7 +70,7 @@
             //Console.WriteLine(IPAddress.Loopback);
         }
 
-        public static async Task ReadHtml()
+        public static async Task ReadResponse()
         {
             Console.OutputEncoding = Encoding.UTF8;
             string url = "https://localhost/";
