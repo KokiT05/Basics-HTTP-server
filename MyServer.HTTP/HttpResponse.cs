@@ -5,6 +5,13 @@
 
     public class HttpResponse : IHttpResponse
     {
+        public HttpResponse(HttpStatusCode httpStatusCode)
+        {
+            this.StatusCode = httpStatusCode;
+            this.Headers = new List<Header>();
+            this.Cookies= new List<Cookie>();
+        }
+
         public HttpResponse(string contentType, byte[] body, HttpStatusCode httpStatusCode = HttpStatusCode.OK, string version = "HTTP/1.1")
         {
             Cookies = new List<Cookie>();

@@ -72,7 +72,8 @@
                     Console.WriteLine($"{httpRequest.Method} {httpRequest.Path} => {httpRequest.Headers.Count} headers");
 
                     HttpResponse httpResponse;
-                    Route route = routeTable.FirstOrDefault(r => string.Compare(r.Path, httpRequest.Path, true) == 0);
+                    Route route = routeTable.FirstOrDefault(r => string.Compare(r.Path, httpRequest.Path, true) == 0 
+                    && r.HttpMethod == httpRequest.Method);
                     if (route != null)
                     {
                         httpResponse = route.Action(httpRequest);

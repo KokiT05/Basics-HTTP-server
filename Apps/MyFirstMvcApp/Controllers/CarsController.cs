@@ -10,9 +10,14 @@ namespace MyFirstMvcApp.Controllers
             return View();
         }
 
+        public HttpResponse AddUser(HttpRequest httpRequest)
+        {
+            return this.Redirect("/");
+        }
+
         public HttpResponse All (HttpRequest httpRequest)
         {
-            return View();
+            return this.View();
         }
     }
 }

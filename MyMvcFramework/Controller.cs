@@ -30,5 +30,12 @@ namespace MyServer.MvcFramework
 
             return httpResponse;
         }
+
+        public HttpResponse Redirect(string url)
+        {
+            HttpResponse httpResponse = new HttpResponse("text/html", new byte[0], HttpStatusCode.Found);
+            httpResponse.Headers.Add(new Header("Location", url));
+            return httpResponse;
+        }
     }
 }
