@@ -19,7 +19,6 @@ namespace MyFirstMvcApp.Controllers
         {
             return this.File("wwwroot/css/bootstrap.min.css", "text/css");
         }
-        //comment
         public HttpResponse BoostrapJs(HttpRequest httpRequest)
         {
             return this.File("wwwroot/js/bootstrap.bundle.min.js", "text/javascript");
