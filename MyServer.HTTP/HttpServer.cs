@@ -81,16 +81,13 @@
                     HttpResponse httpResponse;
                     if (this.routeTable.ContainsKey(httpRequest.Path))
                     {
-                        var ax = this.routeTable[httpRequest.Path];
-                        httpResponse = ax(httpRequest);
+                        var value = this.routeTable[httpRequest.Path];
+                        httpResponse = value(httpRequest);
                     }
                     else
                     {
                         httpResponse = new HttpResponse("text/html", new byte[0], HttpStatusCode.NotFound);
                     }
-
-                    string responseHtml = "<h1>Hello</h1>";
-                    byte[] responseHtmlBytes = Encoding.UTF8.GetBytes(responseHtml);
 
                     //string responseHttp = "HTTP/1.1 200 OK" + HttpConstants.NewLine +
                     //                      "Content-Type: text/html" + HttpConstants.NewLine +
@@ -99,6 +96,7 @@
                     //                      HttpConstants.NewLine +
                     //                      responseHtml +
                     //                      HttpConstants.NewLine;
+
                     byte[] responseInBytes = Encoding.UTF8.GetBytes(httpResponse.ToString());
 
                     await stream.WriteAsync(responseInBytes);

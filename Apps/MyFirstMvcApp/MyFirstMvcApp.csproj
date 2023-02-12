@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MyMvcFramework\MyServer.MvcFramework.csproj" />
     <ProjectReference Include="..\..\MyServer.HTTP\MyServer.HTTP.csproj" />
   </ItemGroup>
 
