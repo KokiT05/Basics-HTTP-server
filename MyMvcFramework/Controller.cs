@@ -1,12 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MyServer.HTTP;
+using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MyServer.MvcFramework
 {
-    internal class Controller
+    public abstract class Controller
     {
+        public HttpResponse View([CallerMemberName] string methodName = null)
+        {
+            string view = System.IO.File.ReadAllText("Views/" +
+                this.GetType().Name.Replace("Controller", string.Empty) + "/" + methodName + ".cshtml");
+
+            string _layoutHtml = System.IO.File.ReadAllText("Views/Shared/_Layout.cshtml");
+
+            string finalHtml = _layoutHtml.Replace("@RenderBody()", view);
+
+            byte[] responseHtmlBytes = Encoding.UTF8.GetBytes(finalHtml);
+
+            HttpResponse httpResponse = new HttpResponse("text/html", responseHtmlBytes);
+
+            return httpResponse; 
+        }
+
+        public HttpResponse File(string filePath, string contentType)
+        {
+            byte[] responseHtmlBytes = System.IO.File.ReadAllBytes(filePath);
+
+            HttpResponse httpResponse = new HttpResponse(contentType, responseHtmlBytes);
+
+            return httpResponse;
+        }
     }
 }

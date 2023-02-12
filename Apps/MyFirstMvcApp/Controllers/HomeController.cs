@@ -1,33 +1,23 @@
 ﻿using MyServer.HTTP;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MyServer.MvcFramework;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace MyFirstMvcApp.Controllers
+namespace MyFirstMvcApp.Controllers     
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public HttpResponse HomePage(HttpRequest httpRequest)
+        public HttpResponse Index(HttpRequest httpRequest)
         {
-            string responseHtml = "<h1>Home Page</h1>";
-            byte[] responseHtmlBytes = Encoding.UTF8.GetBytes(responseHtml);
+            //string responseHtml = File.ReadAllText("Views/Home/Index.cshtml");
+            //byte[] responseHtmlBytes = Encoding.UTF8.GetBytes(responseHtml);
 
-            HttpResponse httpResponse = new HttpResponse("text/html", responseHtmlBytes);
-            httpResponse.Headers.Add(new Header("Server", "MyFirstServer"));
-            httpResponse.Cookies.Add(new ResponseCookie("sid", "TestCookieSid1") { HttpOnly = true, MaxAge = (3 * 24 * 60 * 60) });
+            //HttpResponse httpResponse = new HttpResponse("text/html", responseHtmlBytes);
+            //httpResponse.Headers.Add(new Header("Server", "MyFirstServer"));
+            //httpResponse.Cookies.Add(new ResponseCookie("sid", "TestCookieSid1") { HttpOnly = true, MaxAge = (3 * 24 * 60 * 60) });
 
-            return httpResponse;
-        }
+            //return httpResponse;
 
-        public HttpResponse Favicon(HttpRequest httpRequest)
-        {
-            byte[] favIconAsByte = File.ReadAllBytes("wwwroot\\favicon.ico");
-
-            HttpResponse httpResponse = new HttpResponse("image/vnd.microsoft.icon", favIconAsByte);
-
-            return httpResponse;
+            return this.View();
         }
     }
 }

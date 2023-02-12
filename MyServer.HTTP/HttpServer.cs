@@ -8,27 +8,20 @@
 
     public class HttpServer : IHttpServer
     {
+        public HttpServer(List<Route> routeTable)
+        {
+            this.routeTable = routeTable;
+        }
+
         //private const string NewLine = "\r\n";
         //private const int BufferSize = 4096;
-        IDictionary<string , Func<HttpRequest, HttpResponse>> routeTable = new Dictionary<string, Func<HttpRequest, HttpResponse>>();
+        ICollection<Route> routeTable;
         //private static TcpListener tcpListener;
 
         //public HttpServer()
         //{
         //    routeTable = new Dictionary<string, Func<HttpRequest, HttpResponse>>(); 
         //}
-
-        public void AddRoute(string routeName, Func<HttpRequest, HttpResponse> action)
-        {
-            if (routeTable.ContainsKey(routeName))
-            {
-                routeTable[routeName] = action;
-            }
-            else
-            {
-                routeTable.Add(routeName, action);
-            }
-        }
 
         public async Task StartAsync(int port = 80)
         {
@@ -79,10 +72,10 @@
                     Console.WriteLine($"{httpRequest.Method} {httpRequest.Path} => {httpRequest.Headers.Count} headers");
 
                     HttpResponse httpResponse;
-                    if (this.routeTable.ContainsKey(httpRequest.Path))
+                    Route route = routeTable.FirstOrDefault(r => string.Compare(r.Path, httpRequest.Path, true) == 0);
+                    if (route != null)
                     {
-                        var value = this.routeTable[httpRequest.Path];
-                        httpResponse = value(httpRequest);
+                        httpResponse = route.Action(httpRequest);
                     }
                     else
                     {
