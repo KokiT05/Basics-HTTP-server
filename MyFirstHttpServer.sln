@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstMvcApp", "Apps\MyFir
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wwwroot", "wwwroot", "{175369E4-1764-45E6-8F45-701A1A018CA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyServer.MvcFramework.Test", "MyServer.MvcFramework.Test\MyServer.MvcFramework.Test.csproj", "{14789A67-18D7-4BF2-B025-1ABB235FADFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{7DA5A7C5-118E-4D63-9F4B-735E83776665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DA5A7C5-118E-4D63-9F4B-735E83776665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA5A7C5-118E-4D63-9F4B-735E83776665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14789A67-18D7-4BF2-B025-1ABB235FADFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14789A67-18D7-4BF2-B025-1ABB235FADFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14789A67-18D7-4BF2-B025-1ABB235FADFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14789A67-18D7-4BF2-B025-1ABB235FADFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
